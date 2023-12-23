@@ -1,18 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import GlobalStyles from "./GlobalStyles";
+import Header from "./Header";
+import styled from "styled-components";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Home";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Diego's portfolio coming soon...
-        </p>
-      </header>
-    </div>
+    <AppWrap>
+      <>
+      <GlobalStyles/>
+      <Header/>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home/>} />
+        </Routes>
+      </Router>
+      </>
+    </AppWrap>
   );
 }
+
+const AppWrap = styled.div`
+`
 
 export default App;
