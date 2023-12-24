@@ -3,79 +3,79 @@ import { useState } from "react";
 import './styles/widget.css'
 import { textColor } from "./GlobalStyles";
 
+
 const Widget = () => {
 
+  const renderOne = (
+    <ItemContentWrap>
+      <DescriptionWrap>
+          <H1>Dubs Advising</H1>
+          <Ul>
+              <Li>Developed a website for a sports advising company I co-founded in React, with a backend written in Flask(Python)</Li>
+              <Li>Integrated the Twilio, Stripe, and Paypal APIs to create a seamless customer experience</Li>
+              <ConcordiaProjectDiv>
+              <Project target='_blank' href="https://dubsadvising.com/">Dubs Advising</Project>
+              </ConcordiaProjectDiv>
+          </Ul>
+      </DescriptionWrap>
+    </ItemContentWrap>)
+  const renderTwo = (
+    <ItemContentWrap>
+      <DescriptionWrap>
+        <Ul>  <Li>Identifying Mood Motifs using High-Resolution Mood Symptom Time Series and Dynamic Time Warping</Li>
+              <Li>Implemented an algorithm in MatLab to identify mood motifs in mood symptom time series</Li>
+              <ConcordiaProjectDiv>
+              <Project target='_blank' href="https://github.com/diegogonza112/DTWMotif-Clustering">Learn More...</Project>
+              <Project target='_blank' href="https://drive.google.com/file/d/1y9efjGIeR7uMZBoGqjmxt4nbSiwcvBwb/view">View Poster</Project>
+              </ConcordiaProjectDiv>
+          </Ul>
+      </DescriptionWrap>
+    </ItemContentWrap>
+  )
+  const renderThree = (
+    <ItemContentWrap>
+      <DescriptionWrap>
+        <Ul>
+          <H1>Avanade Inc.</H1>
+            <Li>Interned as a full stack software engineer doing IT consulting with Canada Post</Li>
+          <H1>HubSpot Inc.</H1>
+            <Li>Interned as a frontend software engineer implementing the Sales Meetings UI</Li>
+        </Ul>
+        <ConcordiaProjectDiv>
+            <Project target='_blank' href="https://drive.google.com/file/d/1HQDhRF_IMt74UJR1bAc8JfNS36DPskz8/view">View my full resume</Project>
+        </ConcordiaProjectDiv>
+      </DescriptionWrap>
+    </ItemContentWrap>
+  )
 
-    const [activeTab, setActiveTab] = useState("dubs");
+  const [expandedItems, setExpandedItems] = useState([false, false, false]);
 
-    const handleClick = (tab: string) => {
-      setActiveTab(tab);
-    };
-  
-    const renderContent = () => {
-      switch (activeTab) {
-        case "dubs":
-          return (<ItemContentWrap>
-                    <DescriptionWrap>
-                        <H1>Dubs Advising</H1>
-                        <Ul>
-                            <Li>Developed a website for a sports advising company I co-founded</Li>
-                            <Li>Implemented many technologies such as Twilio, Stripe, and Paypal to create a seamless customer experience</Li>
-                            <Li>Managed a team of three engineers to build and improve the site</Li>
-                            <Li>Implemented the frontend in React and TypeScript, with a backend in Python using the Flask framework</Li>
-                            <ConcordiaProjectDiv>
-                            <Project target='_blank' href="https://dubsadvising.com/">Dubs Advising</Project>
-                            </ConcordiaProjectDiv>
-                        </Ul>
-                        
-                    </DescriptionWrap>
-                </ItemContentWrap>);
-        case "pubs":
-            return (<ItemContentWrap>
-                      <DescriptionWrap>
-                          <H1>Publications section coming soon...</H1>
-                      </DescriptionWrap>
-                  </ItemContentWrap>);
-        case "work":
-        return (<ItemContentWrap>
-                  <DescriptionWrap>
-                      <H1>Work section coming soon...</H1>
-                  </DescriptionWrap>
-              </ItemContentWrap>);
-      }
-    };
+  const toggleItem = (index: number) => {
+      setExpandedItems(expandedItems.map((item, i) => i === index ? !item : false));
+  };
 
-    return (
-        <WidgetWrap>
-            <HeaderWrap>
-                <StyledUl>
-                    <Button onClick={() => handleClick("dubs")}>
-                    {activeTab === "dubs" ? (
-                        <ActiveHeaderItem>Projects</ActiveHeaderItem>
-                        ) : (
-                        <HeaderItem>Projects</HeaderItem>
-                        )}
-                    </Button>
-                    <Button onClick={() => handleClick("pubs")}>
-                    {activeTab === "pubs" ? (
-                        <ActiveHeaderItem>Publications</ActiveHeaderItem>
-                        ) : (
-                        <HeaderItem>Publications</HeaderItem>
-                        )}
-                    </Button>
-                    <Button onClick={() => handleClick("work")}>
-                    {activeTab === "work" ? (
-                        <ActiveHeaderItem>Work</ActiveHeaderItem>
-                        ) : (
-                        <HeaderItem>Work</HeaderItem>
-                        )}
-                    </Button>
-                </StyledUl>
-            </HeaderWrap>
-            <ContentWrap>{renderContent()}</ContentWrap>
-        </WidgetWrap>
-    )
-}
+  const renderItem = (index: number) => {
+      return (
+          <div onClick={() => toggleItem(index)}>
+              {index === 0 ? (<HeaderItem>Projects</HeaderItem>):(index === 1 ? (<HeaderItem>Publications</HeaderItem>):(<HeaderItem>Work Experience</HeaderItem>))}
+              {expandedItems[index] && (index === 0 ? (renderOne):(index === 1 ? (renderTwo):(renderThree)))}
+          </div>
+      );
+  };
+
+  return (
+    <WidgetWrap>
+        <ContentWrap>{renderItem(0)}</ContentWrap>
+        <ContentWrap>{renderItem(1)}</ContentWrap>
+        <ContentWrap>{renderItem(2)}</ContentWrap>
+        {expandedItems.every(v => v === false) ? (
+          <ConcordiaProjectDiv>
+              <Project target='_blank' href="https://drive.google.com/file/d/1HQDhRF_IMt74UJR1bAc8JfNS36DPskz8/view">View my full resume</Project>
+          </ConcordiaProjectDiv>
+        ):null}
+    </WidgetWrap>
+  );
+};
 
 const ConcordiaProjectDiv = styled.div`
 display: flex;
@@ -108,7 +108,6 @@ margin: 10px;
 
 const H1 = styled.h1`
 font-family: 'Fira Code Light';
-margin: 10px;
 `
 
 const DescriptionWrap = styled.div `
@@ -122,26 +121,14 @@ height: 100%;
 width: 100%;
 display: flex;
 flex-direction: column;
-
+overflow:auto;
 `
 
 const ContentWrap = styled.div`
   width: 100%;
   height: 100%;
   text-align: center;
-  margin-top: 10px;
-  border-bottom: 1px solid black;
-
 `;
-
-const Button = styled.button`
-display: flex;
-justify-content: center;
-align-items: center;
-width: 33%;
-border: none;
-background: none;
-`
 
 const StyledUl = styled.ul `
 list-style-type: none;
@@ -149,10 +136,10 @@ display: flex;
 width: 100%;
 justify-content: space-evenly;
 padding-left: 0px;
-
 `
 
 const HeaderItem = styled.li`
+list-style-type: none;
 text-align: center;
 margin: 10px 20px;
 position: relative;
@@ -180,16 +167,6 @@ border-bottom: 1px solid ${textColor};
 
 `;
 
-const ActiveHeaderItem = styled(HeaderItem)`
-
-&:before {
-width: 100%;
-}
-`;
-
-const HeaderWrap = styled.div `
-width: 100%;
-`
 
 const WidgetWrap = styled.div`  
 

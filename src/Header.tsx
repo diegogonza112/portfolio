@@ -166,7 +166,7 @@ const MobileNav = styled.nav`
   top: 100%;
   left: 0;
   width: 100vw;
-  background-color: white;
+  background-color: #859ec8;
   padding: 20px;
   display: flex;
   flex-direction: column;
