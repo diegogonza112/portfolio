@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
+import { useNavigate } from 'react-router-dom';
 
-const Header = () => {
+export default function Header(){
   const [isMobile, setIsMobile] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("blog")
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -25,7 +32,7 @@ const Header = () => {
 
   return (
     <HeaderWrap>
-      <Img src={require("./images/logo.png")} alt="Personal Logo" />
+      <Img src={require("../Static/images/logo.png")} alt="Personal Logo" />
       {isMobile ? (
         <>
           <HamburgerIcon onClick={toggleNav} className={isNavOpen ? "cross" : ""}>
@@ -44,6 +51,11 @@ const Header = () => {
                 <NavItem>
                   <Link to="section2" smooth={true} duration={500} onClick={toggleNav}>
                     Experience
+                  </Link>
+                </NavItem>
+                <NavItem>
+                  <Link to="blog" smooth={true} duration={500} onClick={handleClick}>
+                    Blog
                   </Link>
                 </NavItem>
                 <NavItem>
@@ -66,6 +78,11 @@ const Header = () => {
             <NavItem>
               <Link to="section2" smooth={true} duration={500}>
                 Experience
+              </Link>
+            </NavItem>
+            <NavItem>
+              <Link to="blog" onClick={handleClick}>
+                Blog
               </Link>
             </NavItem>
             <NavItem>
@@ -181,5 +198,3 @@ const MobileNav = styled.nav`
     margin: 15px;
   }
 `;
-
-export default Header

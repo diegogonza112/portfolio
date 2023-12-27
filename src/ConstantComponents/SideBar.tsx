@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FaGithubAlt, FaLinkedin, FaInstagram } from "react-icons/fa"
 import { IconContext } from "react-icons/lib";
-import { textColor } from "./GlobalStyles";
+import { textColor } from "../Static/GlobalStyles";
 
 const SideBar = () => {
     return (

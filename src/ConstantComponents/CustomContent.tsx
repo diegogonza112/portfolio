@@ -1,9 +1,8 @@
-import React from 'react';
 import { Link } from 'react-scroll';
 import { IconContext } from 'react-icons';
 import { IoMdArrowDroprightCircle } from 'react-icons/io';
 import styled from 'styled-components';
-import './styles/customComponent.css'
+import '../Static/styles/customComponent.css'
 
 const CustomContent = () => {
   return (

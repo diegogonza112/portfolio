@@ -1,12 +1,11 @@
-import React from "react";
 import { Controller, Scene } from "react-scrollmagic";
 import { Tween } from "react-gsap";
 import styled from "styled-components";
-import { textColor, primaryColor } from "./GlobalStyles";
-import gridImage from './images/grid.jpeg';
-import './styles/intersection.css'
-import Section2Animation from "./Section2Animation";
-import Section2Content from "./Section2Content";
+import { textColor, primaryColor } from "../Static/GlobalStyles";
+import gridImage from '../Static/images/grid.jpeg';
+import '../Static/styles/intersection.css'
+import Section2Animation from "../Home/Section2/Section2Animation";
+import Section2Content from "../Home/Section2/Section2Content";
 import { GrLocation } from "react-icons/gr";
 import { IconContext } from "react-icons/lib";
 import { FaGithubAlt, FaLinkedin, FaInstagram } from "react-icons/fa"
@@ -22,7 +21,7 @@ const StickyScroll = () => {
       content: (
         <SectionDiv1 className="section1">
           <ContentWrap>
-            <Img className="w-50 h-50 img-fluid mx-auto"src={require('./images/avatar2.jpg')}/>
+            <Img className="w-50 h-50 img-fluid mx-auto"src={require('../Static/images/avatar2.jpg')}/>
             <AboutInfo>
               <H2>About</H2>
               <P className="">I'm Diego Gonzalez Delgado, currently a senior at the University of Toronto,

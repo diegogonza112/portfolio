@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
-import './styles/widget.css'
-import { textColor } from "./GlobalStyles";
+import '../../Static/styles/widget.css'
+import { textColor } from "../../Static/GlobalStyles";
 
 
 const Widget = () => {
@@ -129,14 +129,6 @@ const ContentWrap = styled.div`
   height: 100%;
   text-align: center;
 `;
-
-const StyledUl = styled.ul `
-list-style-type: none;
-display: flex;
-width: 100%;
-justify-content: space-evenly;
-padding-left: 0px;
-`
 
 const HeaderItem = styled.li`
 list-style-type: none;

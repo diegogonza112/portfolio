@@ -1,14 +1,14 @@
 import { useState } from "react";
-import SideBar from "./SideBar"
+import SideBar from "../ConstantComponents/SideBar"
 import styled from "styled-components"
 import Typewriter from 'typewriter-effect';
-import './styles/home.css'
-import StickyScroll from "./StickyScroll";
+import '../Static/styles/home.css'
+import StickyScroll from "../ConstantComponents/StickyScroll";
 import { IoMdArrowDroprightCircle } from 'react-icons/io'
 import { IconContext } from "react-icons/lib";
-import RightSideBar from "./RightSideBar";
-import { textColor } from "./GlobalStyles";
-import CustomContent from "./CustomContent";
+import RightSideBar from "../ConstantComponents/RightSideBar";
+import { textColor } from "../Static/GlobalStyles";
+import CustomContent from "../ConstantComponents/CustomContent";
 
 const Home = () => {
 

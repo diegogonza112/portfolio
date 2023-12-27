@@ -1,0 +1,40 @@
+[debug] [2023-12-27T06:39:58.359Z] ----------------------------------------------------------------------
+[debug] [2023-12-27T06:39:58.374Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2023-12-27T06:39:58.375Z] CLI Version:   13.0.0
+[debug] [2023-12-27T06:39:58.375Z] Platform:      darwin
+[debug] [2023-12-27T06:39:58.375Z] Node Version:  v20.10.0
+[debug] [2023-12-27T06:39:58.376Z] Time:          Wed Dec 27 2023 01:39:58 GMT-0500 (Eastern Standard Time)
+[debug] [2023-12-27T06:39:58.376Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-12-27T06:39:58.380Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-12-27T06:39:58.551Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-27T06:39:58.551Z] > authorizing via signed-in user (diego.gonza@yahoo.com)
+[debug] [2023-12-27T06:39:58.551Z] [iam] checking project diegoportfolio-14121 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-12-27T06:39:58.552Z] > refreshing access token with scopes: []
+[debug] [2023-12-27T06:39:58.554Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-12-27T06:39:58.554Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-12-27T06:40:30.207Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-12-27T06:40:30.208Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-12-27T06:40:34.359Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-12-27T06:40:34.359Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-12-27T06:40:34.426Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/diegoportfolio-14121:testIamPermissions [none]
+[debug] [2023-12-27T06:40:34.426Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/diegoportfolio-14121:testIamPermissions x-goog-quota-user=projects/diegoportfolio-14121
+[debug] [2023-12-27T06:40:34.426Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/diegoportfolio-14121:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-12-27T06:40:34.881Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/diegoportfolio-14121:testIamPermissions 200
+[debug] [2023-12-27T06:40:34.882Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/diegoportfolio-14121:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-12-27T06:40:34.883Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/diegoportfolio-14121 [none]
+[debug] [2023-12-27T06:40:39.147Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/diegoportfolio-14121 200
+[debug] [2023-12-27T06:40:39.147Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/diegoportfolio-14121 {"projectId":"diegoportfolio-14121","projectNumber":"1032693231118","displayName":"diegoPortfolio","name":"projects/diegoportfolio-14121","resources":{"hostingSite":"diegoportfolio-14121"},"state":"ACTIVE","etag":"1_a8ebce84-e7b3-4fa7-94d1-2aa2381a8bf4"}
+[info] 
+[info] === Deploying to 'diegoportfolio-14121'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2023-12-27T06:40:39.155Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/diegoportfolio-14121/versions [none]
+[debug] [2023-12-27T06:40:39.155Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/diegoportfolio-14121/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2023-12-27T06:41:02.263Z] *** [apiv2] error from fetch(https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/diegoportfolio-14121/versions, {"headers":{},"method":"POST","body":"{\"status\":\"CREATED\",\"labels\":{\"deployment-tool\":\"cli-firebase\"}}"}): FetchError: request to https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/diegoportfolio-14121/versions failed, reason: socket hang up
+[debug] [2023-12-27T06:41:07.267Z] Error: Timed out.
+    at Timeout._onTimeout (/usr/local/lib/node_modules/firebase-tools/lib/utils.js:258:49)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+[error] 
+[error] Error: An unexpected error has occurred.
