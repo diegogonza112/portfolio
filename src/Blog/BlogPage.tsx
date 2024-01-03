@@ -1,10 +1,15 @@
 import SideBar from "../ConstantComponents/SideBar"
 import styled from "styled-components"
-import Typewriter from 'typewriter-effect';
+// import Typewriter from 'typewriter-effect';
 import '../Static/styles/home.css'
 import RightSideBar from "../ConstantComponents/RightSideBar";
 import { textColor } from "../Static/GlobalStyles";
+import BlogObject from './BlogObject';
 
+
+const title = "First Commit..."
+const time = "Jan 2nd"
+const body = "Hello World!"
 
 export default function Blog(){
 
@@ -14,21 +19,7 @@ export default function Blog(){
                 <SideBar/>
             </SideBarWrapper>
             <MainWrap>
-                <TypeWrap>
-                <Typewriter 
-                onInit={(typewriter) => {
-                    typewriter
-                    .typeString(`<h1 class="typewriter-h1">Blog coming soon...</h1>`)
-                    .start()
-                    }}
-                options={{
-                    cursor: '|',
-                    delay: 30,
-                    loop: false,
-                    cursorClassName: 'TypewriterCursor'
-                    }}
-                />
-                </TypeWrap>
+                <BlogObject title={title} text={body} time={time}/>
             </MainWrap>
             <RightSideWrap>
                 <RightSideBar/>

@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function Header(){
   const [isMobile, setIsMobile] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleClick = () => {
-    navigate("blog")
+    if (location.pathname === "blog"){
+      navigate("/")
+    }else {
+      navigate("blog")
+    }
   }
 
   useEffect(() => {
@@ -33,6 +38,7 @@ export default function Header(){
   return (
     <HeaderWrap>
       <Img src={require("../Static/images/logo.png")} alt="Personal Logo" />
+      
       {isMobile ? (
         <>
           <HamburgerIcon onClick={toggleNav} className={isNavOpen ? "cross" : ""}>
@@ -41,7 +47,18 @@ export default function Header(){
             <span></span>
           </HamburgerIcon>
           {isNavOpen && (
-            <MobileNav>
+            location.pathname === "/blog" ? (
+              <MobileNav>
+              <Navul>
+                <NavItem>
+                  <Link to="home" smooth={true} duration={500} onClick={handleClick}>
+                    Home
+                  </Link>
+                </NavItem>
+              </Navul>
+            </MobileNav>
+            ):(
+              <MobileNav>
               <Navul>
                 <NavItem>
                   <Link to="section1" smooth={true} duration={500} onClick={toggleNav}>
@@ -65,10 +82,24 @@ export default function Header(){
                 </NavItem>
               </Navul>
             </MobileNav>
+            )
           )}
         </>
       ) : (
-        <NavWrap>
+        location.pathname === "/blog" ? (
+          <NavWrap>
+          <Navul>
+            <HomeWrap>
+              <NavItem>
+                <Link to="home" onClick={handleClick}>
+                  Home
+                </Link>
+              </NavItem>
+            </HomeWrap>
+          </Navul>
+        </NavWrap>
+        ):(
+          <NavWrap>
           <Navul>
             <NavItem>
               <Link to="section1" smooth={true} duration={500}>
@@ -92,6 +123,7 @@ export default function Header(){
             </NavItem>
           </Navul>
         </NavWrap>
+        )
       )}
     </HeaderWrap>
   );
@@ -116,6 +148,10 @@ const crossStyle = `
     display: none;
   }
 `;
+
+const HomeWrap = styled.div `
+margin-right: 50px;
+`
 
 const Navul = styled.ul`
   display: flex;
