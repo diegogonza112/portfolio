@@ -11,7 +11,8 @@ export default function Header(){
   const location = useLocation();
 
   const handleClick = () => {
-    if (location.pathname === "blog"){
+    console.log(location.pathname)
+    if (location.pathname === "/blog"){
       navigate("/")
     }else {
       navigate("blog")
