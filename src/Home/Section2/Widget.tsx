@@ -42,7 +42,7 @@ const Widget = () => {
             <Li>Interned as a frontend software engineer implementing the Sales Meetings UI</Li>
         </Ul>
         <ConcordiaProjectDiv>
-            <Project target='_blank' href="https://drive.google.com/file/d/1HQDhRF_IMt74UJR1bAc8JfNS36DPskz8/view">View my full resume</Project>
+            <Project target='_blank' href="https://drive.google.com/file/d/1V7zRJIufe7RoFGFehpeWxARTll5c7-_Z/view">View my full resume</Project>
         </ConcordiaProjectDiv>
       </DescriptionWrap>
     </ItemContentWrap>
@@ -70,7 +70,7 @@ const Widget = () => {
         <ContentWrap>{renderItem(2)}</ContentWrap>
         {expandedItems.every(v => v === false) ? (
           <ConcordiaProjectDiv>
-              <Project target='_blank' href="https://drive.google.com/file/d/1HQDhRF_IMt74UJR1bAc8JfNS36DPskz8/view">View my full resume</Project>
+              <Project target='_blank' href="https://drive.google.com/file/d/1V7zRJIufe7RoFGFehpeWxARTll5c7-_Z/view">View my full resume</Project>
           </ConcordiaProjectDiv>
         ):null}
     </WidgetWrap>
