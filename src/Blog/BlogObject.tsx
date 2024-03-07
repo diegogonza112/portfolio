@@ -1,5 +1,3 @@
-import styled from 'styled-components'
-
 interface BlogObj {
     text: string,
     time: string,

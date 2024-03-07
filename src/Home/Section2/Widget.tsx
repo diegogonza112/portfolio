@@ -70,7 +70,7 @@ const Widget = () => {
         <ContentWrap>{renderItem(2)}</ContentWrap>
         {expandedItems.every(v => v === false) ? (
           <ConcordiaProjectDiv>
-              <Project target='_blank' href="https://drive.google.com/file/d/1V7zRJIufe7RoFGFehpeWxARTll5c7-_Z/view">View my full resume</Project>
+              <Project target='_blank' href="https://bit.ly/3uXA3tz">View my full resume</Project>
           </ConcordiaProjectDiv>
         ):null}
     </WidgetWrap>

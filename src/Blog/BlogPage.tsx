@@ -3,15 +3,26 @@ import styled from "styled-components"
 // import Typewriter from 'typewriter-effect';
 import '../Static/styles/home.css'
 import RightSideBar from "../ConstantComponents/RightSideBar";
-import { textColor } from "../Static/GlobalStyles";
 import BlogObject from './BlogObject';
+import { useEffect, useState } from 'react';
+import { db } from '../firebaseConfig';
 
-
-const title = "First Commit..."
-const time = "Jan 2nd"
-const body = "Hello World!"
+interface BlogPost {
+    title: string;
+    time: string;
+    text: string;
+}
 
 export default function Blog(){
+
+    const [items, setItems] = useState<BlogPost[]>([]);
+
+    useEffect(() => {
+        db.collection('posts').get().then((querySnapshot: any) => {
+          const data = querySnapshot.docs.map((doc: { data: () => any; }) => doc.data());
+          setItems(data);
+        });
+      }, []);
 
     return (
         <PageWrap>
@@ -19,7 +30,9 @@ export default function Blog(){
                 <SideBar/>
             </SideBarWrapper>
             <MainWrap>
-                <BlogObject title={title} text={body} time={time}/>
+                {items.map((item, index) => (
+                    <BlogObject key={index} title={item.title} text={item.text} time={item.time}/>
+                ))}
             </MainWrap>
             <RightSideWrap>
                 <RightSideBar/>
@@ -27,11 +40,6 @@ export default function Blog(){
         </PageWrap>
     )
 }
-
-const TypeWrap = styled.div`
-height: calc(100vh - 150px);
-border-bottom: 1px solid ${textColor};
-`
 
 const RightSideWrap = styled.div`
 width: 100px;
